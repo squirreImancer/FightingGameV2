@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         //Moves depending on the input and reset the jump input.
-       
+         
          controller.Move(input.direction, input.jump);
                
     }
