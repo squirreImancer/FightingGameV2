@@ -1,0 +1,4 @@
+repository "unittledfightinggamegamev2/unittledfightinggamegamev2@2474500690657@cloud"
+  path "/"
+    br "/main"
+    co "/main"
