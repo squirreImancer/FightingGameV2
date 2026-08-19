@@ -101,7 +101,7 @@ public class PlayerCharacterController : MonoBehaviour
     {
 
         Vector2 targetVelocity = Vector2.zero;
-       
+
 
             if (jump && grounded && !animData.Attacking)
             {
@@ -129,22 +129,27 @@ public class PlayerCharacterController : MonoBehaviour
 
         
 
-        if (PIH.moveinput == Vector2.zero)
+           
+                if ((grounded && PIH.moveinput == Vector2.zero) || animData.Attacking)
+                {
+                    MoveVelocity = Vector2.Lerp(MoveVelocity, Vector2.zero, deceleration * Time.fixedDeltaTime);
+
+                }
+                else if (!grounded && PIH.moveinput == Vector2.zero)
+                {
+                    MoveVelocity = Vector2.Lerp(MoveVelocity, Vector2.zero, airDeceleration * Time.fixedDeltaTime);
+                }
+
+
+
+        if (animData.Attacking == true && !grounded)
         {
-            if (grounded || animData.Attacking)
-            {
-                MoveVelocity = Vector2.Lerp(MoveVelocity, Vector2.zero, deceleration * Time.fixedDeltaTime);
-
-            }
-            else if (!grounded) {
-                MoveVelocity = Vector2.Lerp(MoveVelocity, Vector2.zero, airDeceleration * Time.fixedDeltaTime);
-            }
-
-
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocityY);
         }
-    
+        else
+        {
             rb.linearVelocity = new Vector2(MoveVelocity.x, rb.linearVelocityY);
-
+        }
     }
 
     //Handles the character jump.
