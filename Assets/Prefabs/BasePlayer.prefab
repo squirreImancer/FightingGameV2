@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 2428648797809030099}
   - component: {fileID: 5881761376904910070}
   - component: {fileID: 3992868486742094126}
-  - component: {fileID: 14539160130395880}
   - component: {fileID: 4326204573502141371}
   m_Layer: 0
   m_Name: BasePlayer
@@ -79,7 +78,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bf9a81463b7ab5439c396f3c7117a2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCharacterController
-  animData: {fileID: 2639637114782739624}
   PIH: {fileID: 5699998127857160807}
   MoveVelocity: {x: 0, y: 0}
   acceleration: 10
@@ -118,7 +116,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc184aa838f933944b24027f0308c837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  animData: {fileID: 2639637114782739624}
 --- !u!70 &5881761376904910070
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -219,7 +216,7 @@ MonoBehaviour:
     m_ActionName: 'player/Run[/Keyboard/shift]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 14539160130395880}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AttackController, Assembly-CSharp
         m_MethodName: attack
         m_Mode: 0
@@ -238,20 +235,6 @@ MonoBehaviour:
   m_DefaultActionMap: player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &14539160130395880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3550596480957413060}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efa92140f2d4f3b43b2bcfb735c17443, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AttackController
-  anims: {fileID: 6120195865767093883}
-  animTranslater: {fileID: 2639637114782739624}
 --- !u!95 &4326204573502141371
 Animator:
   serializedVersion: 7
@@ -285,7 +268,6 @@ GameObject:
   - component: {fileID: 6781318597642823579}
   - component: {fileID: 6120195865767093883}
   - component: {fileID: 6277373633980533365}
-  - component: {fileID: 2639637114782739624}
   m_Layer: 0
   m_Name: Render
   m_TagString: Untagged
@@ -389,19 +371,3 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &2639637114782739624
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6007933771287946486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a997279f542aad04cb2c404eefbc8b70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  canAttack: 0
-  Attacking: 0
-  canTurn: 0
-  controller: {fileID: 14539160130395880}

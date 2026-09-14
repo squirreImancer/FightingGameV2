@@ -7,7 +7,6 @@ using UnityEngine;
 [RequireComponent(typeof(CapsuleCollider2D))]
 public class PlayerCharacterController : MonoBehaviour
 {
-    public animatorDataTranslater animData;
     private Rigidbody2D rb;
     private CapsuleCollider2D boxCollider;
     public PlayerInputHandling PIH;
@@ -103,12 +102,12 @@ public class PlayerCharacterController : MonoBehaviour
         Vector2 targetVelocity = Vector2.zero;
        
 
-            if (jump && grounded && !animData.Attacking)
+            if (jump && grounded)
             {
                 Jump();
             }
 
-            if ((direction > 0 && !isFacingRight) || (direction < 0 && isFacingRight) && animData.canTurn)
+            if ((direction > 0 && !isFacingRight) || (direction < 0 && isFacingRight))
             {
 
                 Flip();
@@ -116,7 +115,7 @@ public class PlayerCharacterController : MonoBehaviour
             }
 
             targetVelocity = new Vector2(PIH.moveinput.x * speed, rb.linearVelocityY);
-            if (grounded && !animData.Attacking)
+            if (grounded)
             {
                 MoveVelocity = Vector2.Lerp(MoveVelocity, targetVelocity, acceleration * Time.fixedDeltaTime);
 
@@ -131,7 +130,7 @@ public class PlayerCharacterController : MonoBehaviour
 
         if (PIH.moveinput == Vector2.zero)
         {
-            if (grounded || animData.Attacking)
+            if (grounded)
             {
                 MoveVelocity = Vector2.Lerp(MoveVelocity, Vector2.zero, deceleration * Time.fixedDeltaTime);
 
